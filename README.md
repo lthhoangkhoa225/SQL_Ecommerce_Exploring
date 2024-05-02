@@ -28,6 +28,9 @@ WHERE _table_suffix BETWEEN '0101' AND '0331'
 GROUP BY month
 ORDER BY month;
 ```
+- **Query results:**
+
+![image](https://github.com/lthhoangkhoa225/SQL_Ecommerce_Exploring/assets/168264791/676d8f06-9bca-442d-aaf6-1349feccbf54)
 ### Query 02: Bounce rate per traffic source in July 2017
 ```
 SELECT trafficSource.`source`            source
@@ -39,6 +42,9 @@ FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
 GROUP BY source
 ORDER BY total_visits DESC;
 ```
+- **Query results:**
+
+![image](https://github.com/lthhoangkhoa225/SQL_Ecommerce_Exploring/assets/168264791/b711348b-3950-4c37-9931-fe9dffdccc93)
 ### Query 03: Revenue by traffic source by week, by month in June 2017
 ```
 WITH 
@@ -74,6 +80,9 @@ WITH
       SELECT * FROM month_revenue
       ORDER BY revenue DESC;
 ```
+- **Query results:**
+
+![image](https://github.com/lthhoangkhoa225/SQL_Ecommerce_Exploring/assets/168264791/6471a3ab-5ad9-49a6-a793-256e6aecdb06)
 ### Query 04: Average number of product pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017
 ```
 WITH
@@ -112,6 +121,9 @@ WITH
   USING(month)
   ORDER BY p.month;
 ```
+- **Query results:**
+
+![image](https://github.com/lthhoangkhoa225/SQL_Ecommerce_Exploring/assets/168264791/d34d40bd-31c2-42e9-9105-c9830f53c889)
 ### Query 05: Average number of transactions per user that made a purchase in July 2017
 ```
 SELECT 
@@ -125,6 +137,9 @@ AND totals.totalTransactionRevenue IS NOT NULL
 AND product.productRevenue IS NOT NULL
 GROUP BY month;
 ```
+- **Query results:**
+
+![image](https://github.com/lthhoangkhoa225/SQL_Ecommerce_Exploring/assets/168264791/a57e30d3-5ae2-4897-b989-b205693e2f9b)
 ### Query 06: Average amount of money spent per session. Only include purchaser data in July 2017
 ```
 SELECT 
@@ -138,6 +153,9 @@ UNNEST (hits.product)               product
 WHERE product.productRevenue IS NOT NULL 
 GROUP BY month;
 ```
+- **Query results:**
+
+![image](https://github.com/lthhoangkhoa225/SQL_Ecommerce_Exploring/assets/168264791/fab26721-1e12-457d-ba18-33ff7cca72f2)
 ### Query 07: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017. Output should show product name and the quantity was ordered
 ```
 WITH  
@@ -167,6 +185,9 @@ WITH
   GROUP BY other_purchased_products
   ORDER BY quantity DESC;
 ```
+- **Query results:**
+
+![image](https://github.com/lthhoangkhoa225/SQL_Ecommerce_Exploring/assets/168264791/c684d4e5-0abd-4566-bcfa-e2023784cc70)
 ### Query 08: Calculate cohort map from pageview to addtocart to purchase in last 3 month
 ```
 WITH product_data AS(
@@ -189,6 +210,12 @@ WITH product_data AS(
       ROUND(num_purchase/num_product_view * 100, 2)     purchase_rate
   FROM product_data;
 ```
-## V. Conclusion
+- **Query results:**
 
+![image](https://github.com/lthhoangkhoa225/SQL_Ecommerce_Exploring/assets/168264791/16be469f-135e-44ae-be84-462760154e4d)
+## V. Conclusion
+- In conclusion, my exploration of the eCommerce dataset using SQL on Google BigQuery based on the Google Analytics dataset has revealed several interesting insights.
+- By exploring eCommerce dataset, I have gained valuable information about total visits, pageview, transactions, bounce rate, and revenue per traffic source,.... which could inform future business decisions.
+- To deep dive into the insights and key trends, the next step will visualize the data with some software like Power BI,Tableau,...
+- Overall, this project has demonstrated the power of using SQL and big data tools like Google BigQuery to gain insights into large datasets.
 
